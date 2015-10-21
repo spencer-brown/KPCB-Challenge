@@ -4,6 +4,8 @@
  */
 var Hashmap = function(size) {
 
+    var map = [];
+
     /**
      * Stores the given key/value pair in the hash map. 
      * @param {string} key - The key of the data to be stored in the hashmap
@@ -11,6 +13,65 @@ var Hashmap = function(size) {
      * @returns {boolean} Success indicator
      */
     this.set = function(key, value) {
+        // return false if key is not a string or is empty
+        if (typeof key !== 'string' || key.length === 0) {
+            return false;
+        }
+
+        var hash = hashString(key);
+        var insertionIndex = hash % size;
+        var newNode = {
+            key: key,
+            value: value,
+            next: null
+        };
+
+        if (typeof map[insertionIndex] === 'undefined') {
+            map[insertionIndex] = newNode;
+        } else {
+            // insert into sorted linked list
+
+            var searchNode = map[insertionIndex];
+
+            while (searchNode !== null) {
+                if (searchNode.next === null) {
+                    // we're either at the beginning or the end of the list
+
+                    if (searchNode.key < newNode.key) {
+                        searchNode.next = newNode;
+                    } else if (searchNode.key > newNode.key) {
+                        // insert at beginning of list
+                        newNode.next = searchNode;
+                        map[insertionIndex] = newNode;
+                    } else {
+                        searchNode.value = value;
+                    }
+
+                    break;
+                } else if (searchNode.next.key === newNode.key) {
+                    // overwrite value
+                    searchNode.next.value = value;
+                    break;
+                } else if (searchNode.next.key > newNode.key) {
+                    if (searchNode.key < newNode.key) {
+                        // insert between the two nodes
+                        newNode.next = searchNode.next;
+                        searchNode.next = newNode.next;
+                        break;
+                    } else {
+                        // insert before searchNode - this will only happen when searchNode is the first node in the list
+                        newNode.next = searchNode;
+                        map[insertionIndex] = newNode;
+                        break;
+                    }
+                } else if (searchNode.next.key < newNode.key) {
+                    // keep searching
+                    searchNode = searchNode.next;
+                }
+            }
+        }
+
+        return true;
     };
 
     /**
