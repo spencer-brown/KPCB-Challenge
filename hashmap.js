@@ -105,6 +105,30 @@ var Hashmap = function(size) {
      * @returns {object} Value associated with given key or null
      */
     this.get = function(key) {
+        // return false if key is not a string or is empty
+        if (typeof key !== 'string' || key.length === 0) {
+            return;
+        }
+
+        var hash = hashString(key);
+
+        // if list exists in hashmap, look through it
+        if(map[hash]) {
+            var searchNode = map[hash];
+
+            // find node w/ key
+            while(searchNode.key !== key) {
+                if(typeof searchNode.next === 'undefined') {
+                    return;
+                }
+                searchNode = searchNode.next;
+            }
+
+            return searchNode;
+        } else {
+            // otherwise, key is not in the hashmap
+            return;
+        }
     };
 
     /**
