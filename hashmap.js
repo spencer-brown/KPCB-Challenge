@@ -111,7 +111,7 @@ var Hashmap = function(size) {
      * @returns {object} Value associated with given key or null
      */
     this.get = function(key) {
-        // return false if key is not a string or is empty
+        // return if key is not a string or is empty
         if (typeof key !== 'string' || key.length === 0) {
             return;
         }
