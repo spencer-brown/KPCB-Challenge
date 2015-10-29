@@ -20,7 +20,7 @@ var Hashmap = function(size) {
         }
 
         var hash = hashString(key);
-        var insertionIndex = hash % size;
+        var insertionIndex = Math.abs(hash % size);
         var newNode = {
             key: key,
             value: value
