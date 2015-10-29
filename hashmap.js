@@ -189,6 +189,10 @@ var Hashmap = function(size) {
 
         return itemCount/size;
     };
+
+    this.getMap = function() {
+        return map;
+    };
 };
 
 module.exports = Hashmap;
