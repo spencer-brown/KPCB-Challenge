@@ -116,10 +116,11 @@ var Hashmap = function(size) {
         }
 
         var hash = hashString(key);
+        var index = Math.abs(hash % size);
 
         // if list exists in hashmap, look through it
-        if (map[hash]) {
-            var searchNode = map[hash];
+        if (map[index]) {
+            var searchNode = map[index];
 
             // find node w/ key
             while (searchNode.key !== key) {
