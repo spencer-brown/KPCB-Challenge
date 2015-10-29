@@ -142,6 +142,40 @@ var Hashmap = function(size) {
      * @returns {object} Deleted value or null
      */
     this.delete = function(key) {
+        // return if key is not a string or is empty
+        if (typeof key !== 'string' || key.length === 0) {
+            return;
+        }
+
+        // if list exists in hashmap, look through it
+        if (map[hash]) {
+            var searchNode = map[hash];
+
+            if (searchNode.key === key) {
+                // set new val and return deleted obj
+                map[hash] = searchNode.next;
+                itemCount--;
+                return searchNode;
+            } else {
+                // search through map for node with matching key
+                while (searchNode.next) {
+                    if (searchNode.next.key === key) {
+                        var oldNext = searchNode.next;
+                        searchNode.next = oldNext.next;
+                        itemCount--;
+                        return oldNext;
+                    }
+
+                    searchNode = searchNode.next;
+                }
+
+                // key not found
+                return;
+            }
+        } else {
+            // key is not in the hashmap
+            return;
+        }
     };
 
     /**
