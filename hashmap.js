@@ -119,12 +119,12 @@ var Hashmap = function(size) {
         var hash = hashString(key);
 
         // if list exists in hashmap, look through it
-        if(map[hash]) {
+        if (map[hash]) {
             var searchNode = map[hash];
 
             // find node w/ key
-            while(searchNode.key !== key) {
-                if(typeof searchNode.next === 'undefined') {
+            while (searchNode.key !== key) {
+                if (typeof searchNode.next === 'undefined') {
                     return;
                 }
                 searchNode = searchNode.next;
