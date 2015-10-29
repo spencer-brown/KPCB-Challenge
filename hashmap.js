@@ -131,7 +131,7 @@ var Hashmap = function(size) {
 
             return searchNode;
         } else {
-            // otherwise, key is not in the hashmap
+            // key is not in the hashmap
             return;
         }
     };
