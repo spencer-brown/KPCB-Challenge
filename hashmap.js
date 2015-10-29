@@ -76,6 +76,7 @@ var Hashmap = function(size) {
 
     /**
      * Generate hash from given string. Based on http://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/.
+     *
      * A more complex hashing function would be used (like https://github.com/garycourt/murmurhash-js/blob/master/murmurhash3_gc.js) if external
      * libraries were able to be included.
      * @param {string} str = String from which hash should be generated
