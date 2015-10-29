@@ -6,7 +6,6 @@ var Hashmap = function(size) {
 
     var map = [];
     var itemCount = 0;
-    var mapSize = 0;
 
     /**
      * Stores the given key/value pair in the hash map. 
@@ -30,7 +29,6 @@ var Hashmap = function(size) {
 
         if (typeof map[insertionIndex] === 'undefined') {
             map[insertionIndex] = newNode;
-            mapSize++;
             itemCount++;
         } else {
             // insert into sorted linked list
