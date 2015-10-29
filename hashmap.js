@@ -129,7 +129,7 @@ var Hashmap = function(size) {
                 searchNode = searchNode.next;
             }
 
-            return searchNode;
+            return searchNode.value;
         } else {
             // key is not in the hashmap
             return;
@@ -155,7 +155,7 @@ var Hashmap = function(size) {
                 // set new val and return deleted obj
                 map[hash] = searchNode.next;
                 itemCount--;
-                return searchNode;
+                return searchNode.value;
             } else {
                 // search through map for node with matching key
                 while (searchNode.next) {
