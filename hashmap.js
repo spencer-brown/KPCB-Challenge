@@ -150,6 +150,11 @@ var Hashmap = function(size) {
      * @returns {number} Load factor
      */
     this.load = function() {
+        if(size === 0) {
+            return;
+        }
+
+        return itemCount/size;
     };
 };
 
