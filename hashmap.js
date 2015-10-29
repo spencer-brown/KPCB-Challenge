@@ -5,6 +5,8 @@
 var Hashmap = function(size) {
 
     var map = [];
+    var itemCount = 0;
+    var mapSize = 0;
 
     /**
      * Stores the given key/value pair in the hash map. 
@@ -28,6 +30,8 @@ var Hashmap = function(size) {
 
         if (typeof map[insertionIndex] === 'undefined') {
             map[insertionIndex] = newNode;
+            mapSize++;
+            itemCount++;
         } else {
             // insert into sorted linked list
 
@@ -47,21 +51,25 @@ var Hashmap = function(size) {
                         searchNode.value = value;
                     }
 
+                    itemCount++;
                     break;
                 } else if (searchNode.next.key === newNode.key) {
                     // overwrite value
                     searchNode.next.value = value;
+                    itemCount++;
                     break;
                 } else if (searchNode.next.key > newNode.key) {
                     if (searchNode.key < newNode.key) {
                         // insert between the two nodes
                         newNode.next = searchNode.next;
                         searchNode.next = newNode.next;
+                        itemCount++;
                         break;
                     } else {
                         // insert before searchNode - this will only happen when searchNode is the first node in the list
                         newNode.next = searchNode;
                         map[insertionIndex] = newNode;
+                        itemCount++;
                         break;
                     }
                 } else if (searchNode.next.key < newNode.key) {
