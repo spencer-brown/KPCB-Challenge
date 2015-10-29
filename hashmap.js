@@ -23,8 +23,7 @@ var Hashmap = function(size) {
         var insertionIndex = hash % size;
         var newNode = {
             key: key,
-            value: value,
-            next: null
+            value: value
         };
 
         if (typeof map[insertionIndex] === 'undefined') {
