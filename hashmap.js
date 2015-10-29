@@ -34,8 +34,8 @@ var Hashmap = function(size) {
 
             var searchNode = map[insertionIndex];
 
-            while (searchNode !== null) {
-                if (searchNode.next === null) {
+            while (searchNode) {
+                if (typeof searchNode.next === 'undefined') {
                     // we're either at the beginning or the end of the list
 
                     if (searchNode.key < newNode.key) {
