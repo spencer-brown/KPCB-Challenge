@@ -15,5 +15,7 @@ The challenge is as follows:
 >
 > If your language provides a built-in hashing function for strings (ex. `hashCode` in Java or `__hash__` in Python) you are welcome to use that. If not, you are welcome to do something naive, or use something you find online with proper attribution.
 
-### How to test/run this code:
-* ... to be added later
+### How to test this code:
+1. Install Node and npm. Up-to-date instructions can be found [here](https://nodejs.org/en/).
+2. Run `npm install -g mocha` to install mocha (a JavaScript test framework).
+3. Run `mocha` to run the tests.
