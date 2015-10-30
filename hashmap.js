@@ -148,13 +148,16 @@ var Hashmap = function(size) {
             return;
         }
 
+        var hash = hashString(key);
+        var index = Math.abs(hash % size);
+
         // if list exists in hashmap, look through it
-        if (map[hash]) {
-            var searchNode = map[hash];
+        if (map[index]) {
+            var searchNode = map[index];
 
             if (searchNode.key === key) {
                 // set new val and return deleted obj
-                map[hash] = searchNode.next;
+                map[index] = searchNode.next;
                 itemCount--;
                 return searchNode.value;
             } else {
