@@ -19,3 +19,6 @@ The challenge is as follows:
 1. Install Node and npm. Up-to-date instructions can be found [here](https://nodejs.org/en/).
 2. Run `npm install -g mocha` to install mocha (a JavaScript test framework).
 3. Run `mocha` to run the tests.
+
+### JSDoc Documentation
+JSDoc-generated documentation can be viewed by opening `out/global.html` and `out/hashmap.js.html`.
