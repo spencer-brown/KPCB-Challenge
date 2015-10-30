@@ -67,4 +67,37 @@ describe('hashmap', function() {
             assert.equal(map.set(5, 'foo'), false);
         });
     });
+
+    describe('get', function() {
+        var SIZE = 5;
+        var map = new hashmap(SIZE);
+
+        map.set('elephant', 'orange');
+        map.set('giraffe', 'purple');
+        map.set('ostrich', 'grey');
+        map.set('silver', 'surfer');
+        map.set('fork', 'process');
+        map.set('san', 'francisco');
+
+        it('should get values correctly', function() {
+            assert.equal(map.get('elephant'), 'orange');
+            assert.equal(map.get('giraffe'), 'purple');
+            assert.equal(map.get('ostrich'), 'grey');
+            assert.equal(map.get('silver'), 'surfer');
+            assert.equal(map.get('fork'), 'process');
+            assert.equal(map.get('san'), 'francisco');
+        });
+
+        it('should return `undefined` when given an empty key value', function() {
+            assert.equal(map.get(''), undefined);
+        });
+
+        it('should retun `undefined` when given a non-string key value', function() {
+            assert.equal(map.get(5), undefined);
+        });
+
+        it('should return `undefined` when given a key not present in the hashmap', function() {
+            assert.equal(map.get('spencer'), undefined);
+        });
+    });
 });
