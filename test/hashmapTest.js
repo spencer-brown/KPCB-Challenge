@@ -89,15 +89,15 @@ describe('hashmap', function() {
         });
 
         it('should return `undefined` when given an empty key value', function() {
-            assert.equal(map.get(''), undefined);
+            assert.equal(typeof map.get(''), 'undefined');
         });
 
         it('should retun `undefined` when given a non-string key value', function() {
-            assert.equal(map.get(5), undefined);
+            assert.equal(typeof map.get(5), 'undefined');
         });
 
         it('should return `undefined` when given a key not present in the hashmap', function() {
-            assert.equal(map.get('spencer'), undefined);
+            assert.equal(typeof map.get('spencer'), 'undefined');
         });
     });
 });
