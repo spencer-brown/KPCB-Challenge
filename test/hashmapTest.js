@@ -100,4 +100,64 @@ describe('hashmap', function() {
             assert.equal(typeof map.get('spencer'), 'undefined');
         });
     });
+
+    describe('delete', function() {
+        var SIZE = 5;
+        var map = new hashmap(SIZE);
+
+        map.set('elephant', 'orange');
+        map.set('giraffe', 'purple');
+        map.set('ostrich', 'grey');
+        map.set('silver', 'surfer');
+        map.set('fork', 'process');
+        map.set('san', 'francisco');
+
+        // delete nodes one at a time and check that they delete successfully
+
+        assert.equal(map.get('elephant'), 'orange');
+        map.delete('elephant');
+        assert.equal(typeof map.get('elephant'), 'undefined');
+
+        assert.equal(map.get('giraffe'), 'purple');
+        map.delete('giraffe');
+        assert.equal(typeof map.get('giraffe'), 'undefined');
+
+        assert.equal(map.get('ostrich'), 'grey');
+        map.delete('ostrich');
+        assert.equal(typeof map.get('ostrich'), 'undefined');
+
+        assert.equal(map.get('silver'), 'surfer');
+        map.delete('silver');
+        assert.equal(typeof map.get('silver'), 'undefined');
+
+        assert.equal(map.get('fork'), 'process');
+        map.delete('fork');
+        assert.equal(typeof map.get('fork'), 'undefined');
+
+        assert.equal(map.get('san'), 'francisco');
+        map.delete('san');
+        assert.equal(typeof map.get('san'), 'undefined');
+    });
+
+    describe('load', function() {
+        it('should return the correct load for a non-zero-sized hashmap', function() {
+            var SIZE = 5;
+            var map = new hashmap(SIZE);
+
+            map.set('elephant', 'orange');
+            map.set('giraffe', 'purple');
+            map.set('ostrich', 'grey');
+            map.set('silver', 'surfer');
+            map.set('fork', 'process');
+            map.set('san', 'francisco');
+
+            assert.equal((6/5), map.load());
+        });
+
+        it('should return `undefined` for a hashmap of size 0', function() {
+            var SIZE = 0;
+            var map = new hashmap(SIZE);
+            assert.equal(map.load(), undefined);
+        });
+    });
 });
